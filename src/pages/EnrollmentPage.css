@@ -1,0 +1,50 @@
+.enrollment-page {
+  padding: 20px;
+}
+
+.enrollment-page__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.enrollment-page__cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.enrollment-page__card {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  width: calc(33.33% - 20px); /* Adjust as needed for responsiveness */
+  border: 2px solid transparent; /* Add transparent border initially */
+  transition: border-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+.enrollment-page__card:hover {
+  border-color: orange; /* Change border color on hover */
+}
+
+.enrollment-page__card-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.enrollment-page__card-info {
+  margin-bottom: 5px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .enrollment-page__card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .enrollment-page__card {
+    width: 100%;
+  }
+}

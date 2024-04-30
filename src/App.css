@@ -1,0 +1,23 @@
+/* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif; /* Use Google Fonts for a modern look */
+  background-color: #f5f5f5; /* Light gray background */
+  color: #333; /* Dark gray text color for better readability */
+  line-height: 1.6; /* Improved line spacing for easier reading */
+}
+
+
+
+.footer {
+  background-color: #333; /* Dark background color for the footer */
+  color: #fff; /* White text color for the footer */
+  padding: 10px 0;
+  text-align: center;
+}
+
+.content {
+  flex: 1; /* Take remaining vertical space */
+  padding: 20px; /* Add padding around the content */
+}

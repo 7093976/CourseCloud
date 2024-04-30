@@ -1,0 +1,108 @@
+/* CoursePage.css */
+
+/* Style for the container */
+.course-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for the heading */
+.course-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the subheading */
+.course-page h2 {
+  font-size: 1.5rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Style for the course list */
+.course-list {
+  display: flex;
+  flex-wrap: wrap; /* Wrap cards to next row when necessary */
+  justify-content: space-between; /* Distribute space between cards */
+}
+
+/* Style for each course card */
+
+/* Style for the course title */
+.course-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style for the course description */
+.course-description {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Style for the enroll button */
+.enroll-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.enroll-button:hover {
+  background-color: #0056b3;
+}
+/* Add this CSS to your existing CSS file or create a new CSS file */
+
+.notification {
+  position: fixed;
+  top: 60px; /* Adjusted top position */
+  right: 20px;
+  background-color: white;
+  color: #333; /* Changed text color to a darker shade */
+  padding: 15px 20px;
+  border: 2px solid #f39c12; /* Changed border color to orange */
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0;
+  animation: slideIn 0.5s ease forwards, fadeOut 1.5s ease forwards 2s;
+}
+
+.notification .close-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 10px; /* Adjusted top position */
+  right: 10px;
+  font-size: 18px;
+  color: #f39c12; /* Changed close button color to orange */
+}
+
+.notification .close-btn:hover {
+  color: #d68910; /* Hover color for close button */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

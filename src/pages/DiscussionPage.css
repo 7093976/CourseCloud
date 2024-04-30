@@ -1,0 +1,89 @@
+/* DiscussionPage.css */
+
+.discussion-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.discussion-page__title-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.discussion-page__title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.discussion-page__subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.discussion-page__posts-container {
+  margin-bottom: 20px;
+}
+
+.discussion-page__no-posts {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+.discussion-page__post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.discussion-page__post {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #28a745; /* Green border */
+}
+
+.discussion-page__post-content {
+  margin-top: 5px;
+}
+
+.discussion-page__post-details {
+  font-size: 12px;
+  color: #888;
+}
+
+.discussion-page__add-post-container {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 20px;
+  border: 2px solid #28a745; /* Green border */
+}
+
+.discussion-page__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.discussion-page__form-input,
+.discussion-page__form-textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.discussion-page__form-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.discussion-page__form-button:hover {
+  background-color: #0056b3;
+}

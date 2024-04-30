@@ -1,0 +1,50 @@
+.access-courses-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .course-info {
+    margin-bottom: 20px;
+  }
+  
+  .retrieve-files-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .retrieve-files-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .file-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .file-item {
+    margin-bottom: 10px;
+  }
+  
+  .download-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .download-btn:hover {
+    background-color: #218838;
+  }
+  
+  .no-files-msg {
+    font-style: italic;
+    color: #6c757d;
+  }
+  

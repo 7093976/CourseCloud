@@ -1,0 +1,57 @@
+.learning-paths-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-input,
+.video-input {
+  margin-bottom: 10px;
+}
+
+.file-input label,
+.video-input label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.file-input img,
+.video-input video {
+  max-width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+
+.num-files-container {
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.success-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.existing-courses-list {
+  list-style: none;
+  padding: 0;
+}
+
+.existing-course {
+  margin-bottom: 5px;
+}
+
+/* Optional: Add more styling as needed */

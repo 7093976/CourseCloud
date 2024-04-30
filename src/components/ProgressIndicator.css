@@ -1,0 +1,23 @@
+.progress-indicator {
+    width: 200px; /* Adjust width as needed */
+    height: 10px; /* Adjust height as needed */
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%; /* Match container height */
+    background-color: #007bff; /* Adjust progress color */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Adjust label color */
+    font-size: 0.8rem; /* Adjust font size */
+  }
+  

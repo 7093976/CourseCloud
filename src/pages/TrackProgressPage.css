@@ -1,0 +1,44 @@
+.track-progress {
+    margin: 20px;
+  }
+  
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .student-table th, .student-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .student-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .student-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .id-column, .name-column, .email-column, .region-column, .enrollment-column {
+    text-align: left;
+  }
+  
+  .id-cell, .email-cell {
+    width: 100px;
+  }
+  
+  .name-cell {
+    width: 200px;
+  }
+  
+  .region-cell, .enrollment-cell {
+    width: 150px;
+  }
+  
+  @media (max-width: 768px) {
+    .id-cell, .email-cell, .name-cell, .region-cell, .enrollment-cell {
+      width: auto;
+    }
+  }
+  

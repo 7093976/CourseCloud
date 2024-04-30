@@ -1,0 +1,87 @@
+/* LoginPage.css */
+
+.auth-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.auth-heading {
+  font-size: 32px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.auth-error {
+  color: #ff3333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-form-container {
+  margin-top: 20px;
+}
+
+.auth-input-group {
+  margin-bottom: 20px;
+}
+
+.auth-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555555;
+}
+
+.auth-input {
+  width: calc(
+    100% - 50px
+  ); /* Adjusted width to accommodate the toggle button */
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555555; /* Color of the eye symbol */
+}
+
+.auth-button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: #4caf50;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}

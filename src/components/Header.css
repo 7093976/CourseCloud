@@ -1,0 +1,68 @@
+/* Header.css */
+
+.header {
+  background-color: #4caf50; /* Green color for header background */
+  color: #fff; /* White text color */
+  padding: 20px 0; /* Added padding for top and bottom */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.container {
+  max-width: 1200px; /* Set maximum width for content */
+  margin: 0 auto; /* Center align content */
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center; /* Vertically center items */
+}
+
+.logo {
+  font-size: 28px; /* Increased font size */
+  font-weight: bold; /* Bold font weight */
+  text-decoration: none; /* Remove default underline */
+}
+
+.logo:hover {
+  opacity: 0.8; /* Reduced opacity on hover */
+}
+
+.nav-menu {
+  margin-top: 20px; /* Added margin top for separation */
+}
+
+.header-left {
+  margin-right: 10px;
+}
+
+.back-button svg,
+.forward-button svg {
+  width: 24px;
+  height: 24px;
+  fill: #333333;
+  margin-bottom: 20;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 20px; /* Increased margin between items */
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold; /* Bold font weight */
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.nav-link:hover {
+  color: #ffc107; /* Yellow color on hover */
+}
+
+.forward-button {
+  margin-left: auto; /* Push the forward button to the end */
+}

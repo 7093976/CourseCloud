@@ -1,0 +1,64 @@
+/* ProgressPage.css */
+
+.progress-page {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-page__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center; /* Align the title to the left */
+}
+
+.progress-page__course {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: purple; /* Add purple color border */
+  transition: transform 0.3s; /* Transition effect for zoom */
+}
+
+.progress-page__course:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.progress-page__course-title {
+  font-size: 20px;
+}
+
+.progress-page__details {
+  margin-top: 10px;
+}
+
+.progress-page__duration,
+.progress-page__completed-duration {
+  margin-bottom: 5px;
+}
+
+.progress-page__progress {
+  margin-top: 5px;
+}
+
+/* Progress bar styles */
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px; /* Adjusted margin-top to separate from the border */
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background-color: #ff6347; /* Different color for progress bar (red) */
+  transition: width 0.5s ease-in-out, background-color 0.3s; /* Transition for width and color */
+}
+
+.progress-bar:hover .progress-bar__fill {
+  background-color: #4682b4; /* Change progress bar color on hover */
+  width: 110%; /* Fluid width increase on hover */
+}

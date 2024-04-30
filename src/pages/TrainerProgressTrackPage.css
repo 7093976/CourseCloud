@@ -1,0 +1,67 @@
+/* TrainerProgressTrackPage.css */
+
+.trainer-progress-track-container {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.progress-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden; /* Hide overflow content */
+  border: 2px solid #ff69b4; /* Pink border */
+}
+
+.progress-card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.progress-card h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.progress-card p {
+  color: #666;
+  margin-bottom: 15px;
+  /* Limit height and enable scrolling for description */
+  max-height: 100px; /* Adjust as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.progress-card button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.progress-card button:hover {
+  background-color: #45a049;
+}
+
+.progress-card a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import {
   fetchCourses,
@@ -21,14 +21,41 @@ const CoursesPage = () => {
   const [notification, setNotification] = useState(null); // State for notification
 
   // Fetch courses data from API
-  const fetchCoursesData = async () => {
-    try {
-      const coursesData = await fetchCourses();
-      setCourses(coursesData);
-    } catch (error) {
-      console.error(error.message);
+  useEffect(() => {
+    const fetchCoursesData = async () => {
+      try {
+        const coursesData = await fetchCourses();
+        setCourses(coursesData);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    if (isAuthenticated && user) {
+      fetchCoursesData();
     }
-  };
+  }, [isAuthenticated, user]);
+
+  // Fetch enrollments data for the current user
+  useEffect(() => {
+    const fetchEnrollmentsData = async () => {
+      try {
+        if (user && user.uid) {
+          const enrollmentsData = await fetchEnrollmentsByUserId(user.uid);
+          const enrollmentCourseIdsArray = enrollmentsData.map(
+            (enrollment) => enrollment.course.cid
+          );
+          setEnrollmentCourseIds(enrollmentCourseIdsArray);
+        }
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    if (isAuthenticated && user) {
+      fetchEnrollmentsData();
+    }
+  }, [isAuthenticated, user]);
 
   // Fetch enrollments data for the current user
   const fetchEnrollmentsData = async () => {
@@ -45,15 +72,6 @@ const CoursesPage = () => {
     }
   };
 
-  // Fetch courses and enrollments when authenticated
-  if (isAuthenticated && user) {
-    fetchCoursesData();
-    fetchEnrollmentsData();
-  } else {
-    // Redirect to login if not authenticated
-    return <Navigate to="/" />;
-  }
-
   // Handle course enrollment
   const handleEnroll = async (courseId) => {
     try {
@@ -65,7 +83,7 @@ const CoursesPage = () => {
       setCourses((prevCourses) =>
         prevCourses.filter((course) => course.cid !== courseId)
       );
-      fetchEnrollmentsData();
+      fetchEnrollmentsData(); // Fetch enrollments after enrollment
       setNotification("Course enrolled successfully!"); // Set notification
       setTimeout(() => {
         setNotification(null); // Clear notification after a delay

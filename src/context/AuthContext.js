@@ -13,8 +13,8 @@ const actionTypes = {
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_FAILURE: 'LOGIN_FAILURE',
   LOGOUT: 'LOGOUT',
-  DESTROY: 'DESTROY',
-  RESET_AUTH_STATE: 'RESET_AUTH_STATE', // New action type for resetting auth state
+  RESET_AUTH_STATE: 'RESET_AUTH_STATE',
+  DESTROY: 'DESTROY', // Define a new action type for destroying/resetting the auth state
 };
 
 const authReducer = (state, action) => {
@@ -34,15 +34,9 @@ const authReducer = (state, action) => {
         error: action.payload,
       };
     case actionTypes.LOGOUT:
-      return initialState;
-    case actionTypes.DESTROY:
-      return {
-        isAuthenticated: false,
-        user: null,
-        error: null,
-      };
-    case actionTypes.RESET_AUTH_STATE: // Handle resetting authentication state
-      return initialState;
+    case actionTypes.RESET_AUTH_STATE:
+    case actionTypes.DESTROY: // Handle the DESTROY action type to reset the authentication state
+      return initialState; // Reset the state to the initial state
     default:
       return state;
   }
@@ -59,18 +53,11 @@ export const AuthProvider = ({ children }) => {
 
   const destroy = () => {
     dispatch({ type: actionTypes.DESTROY });
-    // Optionally, you can perform additional cleanup here if needed
+    navigate('/');
   };
 
-  // Check if the user is authenticated on component mount
-  // React.useEffect(() => {
-  //   if (!state.isAuthenticated) {
-  //     navigate('/');
-  //   }
-  // }, [state.isAuthenticated, navigate]);
-
   return (
-    <AuthContext.Provider value={{ state, dispatch, logout, destroy }}>
+    <AuthContext.Provider value={{ state, dispatch, logout, destroy }}> {/* Include destroy in the context value */}
       {children}
     </AuthContext.Provider>
   );

@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Import useParams for accessing URL parameters
+import { useParams } from "react-router-dom"; 
 import {
   fetchEnrolledStudentsByCourseId,
   fetchCourseById,
-} from "../services/api"; // Import API functions for fetching data
-import "./TrackProgressPage.css"; // Import CSS file for styling
+} from "../services/api"; 
+import "./TrackProgressPage.css"; 
 
 const TrackProgressPage = () => {
-  const { cid } = useParams(); // Get the cid parameter from the URL
-  const [courseName, setCourseName] = useState(""); // State for storing course name
-  const [enrolledStudents, setEnrolledStudents] = useState([]); // State for storing enrolled students data
-  const [sortedStudents, setSortedStudents] = useState([]); // State for storing sorted students data
-  const [searchTerm, setSearchTerm] = useState(""); // State for search term
-  const [sortBy, setSortBy] = useState("enrollmentDate"); // State for sorting criteria (default: enrollmentDate)
+  const { cid } = useParams(); 
+  const [courseName, setCourseName] = useState(""); 
+  const [enrolledStudents, setEnrolledStudents] = useState([]); 
+  const [sortedStudents, setSortedStudents] = useState([]); 
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const [sortBy, setSortBy] = useState("enrollmentDate"); 
+  const [sortOrder, setSortOrder] = useState("asc"); // State for sorting order
 
-  // Fetch course name and enrolled students data when cid changes
   useEffect(() => {
     fetchCourseName(cid);
     fetchEnrolledStudentsData(cid);
   }, [cid]);
 
-  // Sort students whenever enrolledStudents or sortBy changes
   useEffect(() => {
     sortStudents();
-  }, [enrolledStudents, sortBy]);
+  }, [enrolledStudents, sortBy, sortOrder]); // Include sortOrder in useEffect dependencies
 
-  // Function to fetch course name by courseId
   const fetchCourseName = async (courseId) => {
     try {
       const course = await fetchCourseById(courseId);
@@ -35,7 +33,6 @@ const TrackProgressPage = () => {
     }
   };
 
-  // Function to fetch enrolled students data by courseId
   const fetchEnrolledStudentsData = async (courseId) => {
     try {
       const students = await fetchEnrolledStudentsByCourseId(courseId);
@@ -45,27 +42,30 @@ const TrackProgressPage = () => {
     }
   };
 
-  // Function to sort students based on sortBy criteria
   const sortStudents = () => {
     const sorted = [...enrolledStudents].sort((a, b) => {
-      if (sortBy === "region") {
-        return a.user.region.localeCompare(b.user.region);
-      } else if (sortBy === "enrollmentDate") {
-        return new Date(a.enrollmentDate) - new Date(b.enrollmentDate);
-      } else {
-        // Handle sorting by other criteria if needed
-        return 0;
+      let comparison = 0;
+      if (sortBy === "region" || sortBy === "name") {
+        const nameA = sortBy === "name" ? `${a.user.firstName} ${a.user.lastName}` : a.user.region;
+        const nameB = sortBy === "name" ? `${b.user.firstName} ${b.user.lastName}` : b.user.region;
+        comparison = nameA.localeCompare(nameB);
+      } else if (sortBy === "enrollmentDate" || sortBy === "enrollmentTime") {
+        const dateA = new Date(a.enrollmentDate);
+        const dateB = new Date(b.enrollmentDate);
+        comparison = dateA - dateB;
+        if (sortBy === "enrollmentTime") {
+          comparison = dateA.getTime() - dateB.getTime();
+        }
       }
+      return sortOrder === "asc" ? comparison : -comparison; // Apply sortOrder
     });
     setSortedStudents(sorted);
   };
 
-  // Function to handle search term change
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  // Filter students based on search term
   const filteredStudents = sortedStudents.filter((student) => {
     return (
       student.user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -75,7 +75,6 @@ const TrackProgressPage = () => {
     );
   });
 
-  // JSX return
   return (
     <div className="track-progress">
       <h1>Enrolled Students for "{courseName}"</h1>
@@ -88,9 +87,13 @@ const TrackProgressPage = () => {
         />
         <select onChange={(e) => setSortBy(e.target.value)}>
           <option value="enrollmentDate">Sort by Enrollment Date</option>
+          <option value="enrollmentTime">Sort by Enrollment Time</option>
+          <option value="name">Sort by Name</option>
           <option value="region">Sort by Region</option>
-          {/* Add more options for sorting if needed */}
         </select>
+        <button onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
+          {sortOrder === "asc" ? "▲" : "▼"} {/* Symbol for sorting order */}
+        </button>
       </div>
       <table className="student-table">
         <thead>
@@ -122,4 +125,4 @@ const TrackProgressPage = () => {
   );
 };
 
-export default TrackProgressPage; // Export TrackProgressPage component
+export default TrackProgressPage;

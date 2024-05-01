@@ -27,6 +27,25 @@ body {
   text-align: center;
   color: #333333;
 }
+/* Error Message Styling */
+.error-message {
+  color: #ff3333;
+  margin-bottom: 10px;
+}
+
+/* Form Field Styling with Validation */
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border-color: #ff3333;
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+  border-color: #4CAF50;
+}
+
 
 /* User Type Styling */
 .user-type {

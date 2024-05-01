@@ -5,6 +5,7 @@ import { EnrollmentService } from "../services/api";
 import "./EnrollmentPage.css";
 
 // Component definition
+// Component definition
 const EnrollmentPage = ({ handleCourseCode }) => {
   // Authentication context
   const { state } = useAuth();
@@ -27,13 +28,20 @@ const EnrollmentPage = ({ handleCourseCode }) => {
     };
 
     // Check authentication status and fetch enrollments
-    if (!user) {
-      return <Navigate to="/" />;
+    if (!isAuthenticated || !user) {
+      // Return early if not authenticated or user is not available
+      return;
     }
 
     // Fetch enrollments when the component renders
     fetchEnrollments();
   }, [isAuthenticated, user]);
+
+  // Check if user is not authenticated or user is not available
+  if (!isAuthenticated || !user) {
+    // Render the Navigate component to redirect to the login page
+    return <Navigate to="/" />;
+  }
 
   // Function to handle accessing courses
   const handleAccessCourses = (courseCode) => {
@@ -83,3 +91,4 @@ const EnrollmentPage = ({ handleCourseCode }) => {
 };
 
 export default EnrollmentPage;
+

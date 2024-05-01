@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DiscussionService } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import "./DiscussionPage.css";
+
 import { useNavigate } from "react-router-dom";
 
 // Component definition

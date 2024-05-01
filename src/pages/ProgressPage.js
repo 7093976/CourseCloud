@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom"; // Import Navigate for redirection
 import { useAuth } from "../context/AuthContext"; // Import useAuth hook
 import { EnrollmentService } from "../services/api"; // Import EnrollmentService for fetching enrollments
@@ -11,11 +11,6 @@ const ProgressPage = () => {
   const [enrollments, setEnrollments] = useState([]); // State for enrollments
   const { isAuthenticated, user } = state; // Destructure isAuthenticated and user from state
 
-  // Redirect to login page if not authenticated or user is not available
-  if (!isAuthenticated || !user) {
-    return <Navigate to="/" />;
-  }
-
   // Function to fetch enrollments
   const fetchEnrollments = async () => {
     try {
@@ -26,7 +21,16 @@ const ProgressPage = () => {
     }
   };
 
-  fetchEnrollments(); // Fetch enrollments when the component renders
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      fetchEnrollments(); // Fetch enrollments when the component mounts
+    }
+  }, [isAuthenticated, user]);
+
+  // Redirect to login page if not authenticated or user is not available
+  if (!isAuthenticated || !user) {
+    return <Navigate to="/" />;
+  }
 
   // JSX return
   return (

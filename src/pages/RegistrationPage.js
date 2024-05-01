@@ -27,6 +27,14 @@ function RegistrationPage({ userType }) {
       ...prevUserData,
       [name]: value,
     }));
+    clearErrorMessage(name); // Clear error message when user starts typing in the field
+  };
+
+  // Function to clear error message for a specific field
+  const clearErrorMessage = (fieldName) => {
+    if (errorMessage && selectedField === fieldName) {
+      setErrorMessage("");
+    }
   };
 
   // Function to handle field focus
@@ -47,6 +55,7 @@ function RegistrationPage({ userType }) {
       password: password,
       strength: getPasswordStrength(password),
     }));
+    clearErrorMessage("password"); // Clear error message for password field
   };
 
   // Function to calculate password strength
@@ -102,6 +111,7 @@ function RegistrationPage({ userType }) {
       lastName: profile.getFamilyName(),
       email: profile.getEmail(),
     }));
+    clearErrorMessage("email"); // Clear error message for email field
   };
 
   // Callback function to handle failed Google Sign-In
@@ -114,13 +124,13 @@ function RegistrationPage({ userType }) {
     value: code,
     label: countries[code].name,
   }));
-  
 
   return (
     <div className="registration-container">
       <h2 className="registration-title">Registration Page</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="registration-form">
+
         <div className="form-group unique-class-7">
           <label htmlFor="firstName">First Name:</label>
           <input

@@ -32,10 +32,9 @@ const UploadCoursePage = () => {
   const handleSubmit = async () => {
     try {
       // Generate course code based on course name
-      const courseCode = formData.courseName
-        .replace(/\s+/g, "")
-        .toUpperCase()
-        .substring(0, 4);
+      const uniqueIdentifier = Math.random().toString(36).substring(2, 6); // Generate a random 4-character string
+      const courseCode = `${formData.courseName.replace(/\s+/g, "").toUpperCase().substring(0, 4)}_${uniqueIdentifier}`;
+      
 
       // Prepare data to send to the server
       const formDataToSend = {

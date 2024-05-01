@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LearningPaths.css";
-// Step 1: Import useNavigate
+import { useAuth } from "../context/AuthContext"; // Import useAuth hook
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
 // Component definition
 const LearningPathsPage = ({ courseCode }) => {
@@ -14,6 +15,9 @@ const LearningPathsPage = ({ courseCode }) => {
   const [loading, setLoading] = useState(false); // State for loading status
   const [existingCourses, setExistingCourses] = useState([]); // State for existing courses
   const [uploadSuccess, setUploadSuccess] = useState(false); // State for upload success
+  const navigate= useNavigate();
+  const auth = useAuth();
+
 
   // Fetch existing courses when the component mounts or when courseCode changes
   useEffect(() => {
@@ -40,6 +44,12 @@ const LearningPathsPage = ({ courseCode }) => {
     setVideoPreviews([]); // Clear video previews when changing the number of files
   };
 
+  console.log("Auth state:", auth);
+
+  if (!auth.state.isAuthenticated) {
+    navigate("/"); // Redirect to home page
+    return null; // or redirect to login page
+  }
   // Event handler for file input change
   const handleFileChange = (e, index) => {
     const newFiles = [...files];

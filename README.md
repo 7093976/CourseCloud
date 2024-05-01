@@ -47,8 +47,3 @@ The Learning Management System (LMS) React Application is a modern and intuitive
 
 **Contributing:**
 Contributions are welcome! Feel free to fork the repository and submit pull requests for any enhancements or bug fixes.
-
-**License:**
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-**Note:** While the application provides a robust learning experience, further improvements can be made to enhance functionality and user engagement. Your feedback and contributions are highly appreciated to make this project even better!
